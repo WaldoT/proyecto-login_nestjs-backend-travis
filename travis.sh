@@ -20,6 +20,12 @@ if [[ -n "$CF_PASSWORD" ]]; then
   cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORGANIZATION -s $CF_SPACE
   cf push --no-start
   #cf set-env $CF_APP MYSQL_UNMSM_BANKING_NEST_URL $MYSQL_UNMSM_BANKING_NEST_URL
+  cf set-env $CF_APP DB_HOST $DB_HOST
+  cf set-env $CF_APP DB_PORT $DB_PORT
+  cf set-env $CF_APP DB_DATABASE $DB_DATABASE
+  cf set-env $CF_APP DB_USER $DB_USER
+  cf set-env $CF_APP DB_PASSWORD $DB_PASSWORD
+  cf set-env $CF_APP JWT_SECRET $JWT_SECRET
   cf start $CF_APP
 else
   echo "Skip deploy to IBM Cloud Foundry because CF_PASSWORD is empty"
